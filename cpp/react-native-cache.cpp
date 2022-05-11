@@ -1,4 +1,6 @@
 #include "react-native-cache.h"
+#include <SQLiteCpp/SQLiteCpp.h>
+#include <iostream>
 
 using namespace facebook::jsi;
 using namespace std;
@@ -36,7 +38,17 @@ void setup_jsimultiply(Runtime& jsiRuntime)
   };
 
 
-  void install(Runtime& jsiRuntime) {
+  void install(Runtime& jsiRuntime, const char* dbPath) {
+    SQLite::Database db (dbPath, SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);
+    try {
+    SQLite::Transaction transaction(db);
+    db.exec("CREATE TABLE IF NOT EXISTS metadata (key TEXT PRIMARY KEY, namespace TEXT DEFAULT 'global' NOT NULL, value BLOB NOT NULL, expend_value BLOB, created DATETIME, modified DATETIME);");
+    db.exec("CREATE TRIGGER IF NOT EXISTS insert_trigger AFTER INSERT ON metadata BEGIN UPDATE metadata SET created = DATETIME ('NOW', 'localtime'), modified = DATETIME ('NOW', 'localtime') WHERE key = NEW.key; END;");
+    db.exec("CREATE TRIGGER IF NOT EXISTS update_trigger AFTER UPDATE ON metadata BEGIN UPDATE metadata SET modified = DATETIME ('NOW', 'localtime') WHERE key = NEW.key; END;");
+    transaction.commit();
+    } catch (std::exception& e) {
+      std::cout << "SQLite exception: " << e.what() << std::endl;
+    }
     setup_jsimultiply(jsiRuntime);
   }
 

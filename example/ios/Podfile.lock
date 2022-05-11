@@ -205,6 +205,7 @@ PODS:
   - React-jsinspector (0.64.2)
   - react-native-cache (0.1.0):
     - React-Core
+    - SQLiteCpp
   - React-perflogger (0.64.2)
   - React-RCTActionSheet (0.64.2):
     - React-Core/RCTActionSheetHeaders (= 0.64.2)
@@ -269,6 +270,7 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
+  - SQLiteCpp (0.0.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -302,6 +304,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - SQLiteCpp (from `../../thirdparty/SQLiteCpp`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -365,6 +368,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  SQLiteCpp:
+    :path: "../../thirdparty/SQLiteCpp"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -385,7 +390,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-cache: e3d065d51f47728a1c48edab88f9df228bce0c3f
+  react-native-cache: db5a365fd9c3b1f3fdf6e5b0289184f39cf2162a
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -398,8 +403,9 @@ SPEC CHECKSUMS:
   React-RCTVibration: 24600e3b1aaa77126989bc58b6747509a1ba14f3
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
+  SQLiteCpp: bf13aeff8a1f69678976633fc1b84736b9799941
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
-PODFILE CHECKSUM: f6bec695a83456a6d4ff9a5fccfa5b03af72a0bc
+PODFILE CHECKSUM: 75d30c423d46e990620fba11eb3b06122fb5af73
 
 COCOAPODS: 1.11.2

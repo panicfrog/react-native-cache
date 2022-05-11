@@ -4,7 +4,7 @@
 
 namespace cache {
   int multiply(float a, float b);
-  void install(facebook::jsi::Runtime& jsiRuntime);
+  void install(facebook::jsi::Runtime& jsiRuntime, const char* dbPath);
 }
 
 #endif /* EXAMPLE_H */

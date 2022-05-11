@@ -35,7 +35,10 @@ RCT_EXPORT_METHOD(multiply:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
   if (!cxxBridge.runtime) {
     return;
   }
-  cache::install(*(facebook::jsi::Runtime *)cxxBridge.runtime);
+  
+ NSString *dir = [NSString stringWithFormat:@"%@/jsi_cache.db", NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)[0]];
+  const char *path = [dir UTF8String];
+  cache::install(*(facebook::jsi::Runtime *)cxxBridge.runtime, path);
 }
 
 @end
