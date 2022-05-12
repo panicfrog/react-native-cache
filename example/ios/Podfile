@@ -9,7 +9,7 @@ target 'CacheExample' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'react-native-cache', :path => '../..'
-  pod 'SQLiteCpp', :path => '../../thirdparty/SQLiteCpp'
+  pod 'SQLiteCpp', :path => '../../thirdparty/SQLiteCppIOS'
 
   # Enables Flipper.
   #
