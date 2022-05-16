@@ -55,31 +55,31 @@ CacheValue DiskKVStorage::getValue(string key) const {
     //    5 -> string
     //    6 -> json string
     switch (type) {
-      case 0: {
+      case CacheValue::DataType::INT: {
         const int v = *reinterpret_cast<const int *>(value);
         return CacheValue(v);
       }
-      case 1: {
+      case CacheValue::DataType::LONG: {
         const long v = *reinterpret_cast<const long *>(value);
         return CacheValue(v);
       }
-      case 2: {
+      case CacheValue::DataType::FLOAT: {
         const float v = *reinterpret_cast<const float *>(value);
         return CacheValue(v);
       }
-      case 3: {
+      case CacheValue::DataType::DOUBLE: {
         const double v = *reinterpret_cast<const double *>(value);
         return CacheValue(v);
       }
-      case 4: {
+      case CacheValue::DataType::BOOL: {
         const bool v =  *reinterpret_cast<const bool *>(value);
         return CacheValue(v);
       }
-      case 5: {
+      case CacheValue::DataType::STRING: {
         std::string v(value);
         return CacheValue(v, false);
       }
-      case 6: {
+      case CacheValue::DataType::JSON_STRING: {
         std::string v(value);
         return CacheValue(v, true);
       }
@@ -105,40 +105,37 @@ void DiskKVStorage::inner_save(const string& key, const char * value, int size, 
 void DiskKVStorage::save(const string key, const int value) const {
   const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
-  inner_save(key, _value, size, 0);
+  inner_save(key, _value, size, CacheValue::DataType::INT);
 }
 
 void DiskKVStorage::save(const string key, const long value) const {
   const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
-  inner_save(key, _value, size, 1);
+  inner_save(key, _value, size, CacheValue::DataType::LONG);
 }
 
 void DiskKVStorage::save(const string key, const float value) const {
   const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
-  inner_save(key, _value, size, 2);
+  inner_save(key, _value, size, CacheValue::DataType::FLOAT);
 }
 
 void DiskKVStorage::save(const string key, const double value) const {
   const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
-  inner_save(key, _value, size, 3);
+  inner_save(key, _value, size, CacheValue::DataType::DOUBLE);
 }
 
 void DiskKVStorage::save(const string key, const bool value) const {
   const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
-  inner_save(key, _value, size, 4);
+  inner_save(key, _value, size, CacheValue::DataType::BOOL);
 }
 
 void DiskKVStorage::save(const string key, const string value, const bool is_object) const {
   const char * _value = value.data();
   int size = int(value.size());
-  int type = 5;
-  if (is_object) {
-    type = 6;
-  }
+  int type = is_object ? CacheValue::DataType::STRING : CacheValue::DataType::JSON_STRING;
   inner_save(key, _value, size, type);
 }
 

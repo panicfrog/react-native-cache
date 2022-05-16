@@ -16,7 +16,7 @@ using namespace std;
 namespace cache {
 
 class CacheValue {
-  enum DataType { INT, LONG, FLOAT, DOUBLE, BOOL, STRING, JSON_STRING, NULL_VALUE };
+  
   union Data {
     int i;
     long l;
@@ -35,6 +35,7 @@ class CacheValue {
   };
   
 public:
+  enum DataType { INT, LONG, FLOAT, DOUBLE, BOOL, STRING, JSON_STRING, NULL_VALUE };
   CacheValue();
   CacheValue(const int i);
   CacheValue(const long l);
