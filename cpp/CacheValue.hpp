@@ -47,21 +47,21 @@ public:
   CacheValue& operator=(CacheValue&& other);
   ~CacheValue() {}
   
-  bool isNull();
-  bool isInt();
-  bool isLong();
-  bool isFloat();
-  bool isDouble();
-  bool isBool();
-  bool isString();
-  bool isJsonString();
-  int    getInt();
-  bool   getBool();
-  long   getLong();
-  float  getFloat();
-  double getDouble();
-  string getString();
-  string getJsonString();
+  bool isNull() const;
+  bool isInt() const;
+  bool isLong() const;
+  bool isFloat() const;
+  bool isDouble() const;
+  bool isBool() const;
+  bool isString() const;
+  bool isJsonString() const;
+  int    getInt() const;
+  bool   getBool() const;
+  long   getLong() const;
+  float  getFloat() const;
+  double getDouble() const;
+  string getString() const;
+  string getJsonString() const;
 private:
   DataType type_;
   Data data_;

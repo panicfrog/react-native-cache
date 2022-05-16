@@ -20,19 +20,19 @@ namespace cache {
 
 class DiskKVStorage {
 public:
-  DiskKVStorage(string path);
+  DiskKVStorage(const string& path);
   DiskKVStorage(const char *path);
-  CacheValue getValue(string key);
-  void save(string key, int    value);
-  void save(string key, bool   value);
-  void save(string key, long   value);
-  void save(string key, float  value);
-  void save(string key, double value);
-  void save(string key, string value, bool is_object);
+  CacheValue getValue(string key) const;
+  void save(string key, int    value) const;
+  void save(string key, bool   value) const;
+  void save(string key, long   value) const;
+  void save(string key, float  value) const;
+  void save(string key, double value) const;
+  void save(string key, string value, bool is_object) const;
 private:
   string path;
   SQLite::Database db;
-  void inner_save(string& key, const char * value, int size, int type);
+  void inner_save(string& key, const char * value, int size, int type) const;
 };
 
 }

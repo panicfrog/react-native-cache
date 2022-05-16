@@ -21,69 +21,69 @@ CacheValue& CacheValue::operator=(CacheValue&& other) {
   return *this;
 }
 
-bool CacheValue::isNull() {
+bool CacheValue::isNull() const {
   return type_ == DataType::NULL_VALUE;
 }
 
-bool CacheValue::isInt() {
+bool CacheValue::isInt() const {
   return type_ == DataType::INT;
 }
 
-bool CacheValue::isLong() {
+bool CacheValue::isLong() const {
   return type_ == DataType::LONG;
 }
 
-bool CacheValue::isFloat() {
+bool CacheValue::isFloat() const {
   return type_ == DataType::FLOAT;
 }
 
-bool CacheValue::isDouble() {
+bool CacheValue::isDouble() const {
   return type_ == DataType::DOUBLE;
 }
 
-bool CacheValue::isBool() {
+bool CacheValue::isBool() const {
   return type_ == DataType::BOOL;
 }
 
-bool CacheValue::isString() {
+bool CacheValue::isString() const {
   return type_ == DataType::STRING;
 }
 
-bool CacheValue::isJsonString() {
+bool CacheValue::isJsonString() const {
   return type_ == DataType::JSON_STRING;
 }
 
-int CacheValue::getInt() {
+int CacheValue::getInt() const {
   assert(isInt());
   return data_.i;
 }
 
-long CacheValue::getLong() {
+long CacheValue::getLong() const {
   assert(isLong());
   return data_.l;
 }
 
-float CacheValue::getFloat() {
+float CacheValue::getFloat() const {
   assert(isFloat());
   return data_.f;
 }
 
-double CacheValue::getDouble() {
+double CacheValue::getDouble() const {
   assert(isDouble());
   return data_.d;
 }
 
-bool CacheValue::getBool() {
+bool CacheValue::getBool() const {
   assert(isBool());
   return data_.b;
 }
 
-string CacheValue::getString() {
+string CacheValue::getString() const {
   assert(isString());
   return data_.s;
 }
 
-string CacheValue::getJsonString() {
+string CacheValue::getJsonString() const {
   assert(isJsonString());
   return data_.s;
 }
