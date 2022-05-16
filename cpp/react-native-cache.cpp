@@ -136,20 +136,6 @@ void setupKvGet(Runtime& jsiRuntime, shared_ptr<DiskKVStorage> kv)
       auto sharedKV = make_shared<DiskKVStorage>(DiskKVStorage(dbPath));
       setupKvSet(jsiRuntime, sharedKV);
       setupKvGet(jsiRuntime, sharedKV);
-//      kv.save("key1", -1);
-//      kv.save("key2", 2.4);
-//      kv.save("key3", true);
-//      kv.save("key4", "hahahaha", false);
-//      kv.save("key5", "dafadfa", false);
-//      auto value = kv.getValue("key1");
-//      auto value2 = kv.getValue("key2");
-//      auto value3 = kv.getValue("key3");
-//      auto value4 = kv.getValue("key4");
-//      std::cout << "get value: " << value.getInt()
-//      << "\n value2: " << value2.getDouble()
-//      << "\n value3: " << value3.getBool()
-//      << "\n value4: " << value4.getString()
-//      << std::endl;
     } catch (std::exception& e) {
       std::cout << "SQLite exception: " << e.what() << std::endl;
     }
