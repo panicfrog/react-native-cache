@@ -25,23 +25,23 @@ class CacheValue {
     bool b;
     string s;
     Data(){};
-    Data(int i): i (i){}
-    Data(long l): l (l){}
-    Data(float f): f (f){}
-    Data(double d): d (d){}
-    Data(bool b): b (b){}
-    Data(string s): s (s){}
+    Data(const int i): i (i){}
+    Data(const long l): l (l){}
+    Data(const float f): f (f){}
+    Data(const double d): d (d){}
+    Data(const bool b): b (b){}
+    Data(const string& s): s (s){}
     ~Data() {};
   };
   
 public:
   CacheValue();
-  CacheValue(int i);
-  CacheValue(long l);
-  CacheValue(float f);
-  CacheValue(double d);
-  CacheValue(bool b);
-  CacheValue(string s, bool is_object);
+  CacheValue(const int i);
+  CacheValue(const long l);
+  CacheValue(const float f);
+  CacheValue(const double d);
+  CacheValue(const bool b);
+  CacheValue(const string& s, bool is_object);
   
   CacheValue(CacheValue&& value){};
   CacheValue& operator=(CacheValue&& other);

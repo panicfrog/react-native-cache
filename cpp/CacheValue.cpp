@@ -9,12 +9,12 @@
 namespace cache {
 
 CacheValue::CacheValue(): type_(DataType::NULL_VALUE), data_() {}
-CacheValue::CacheValue(int i): type_(DataType::INT), data_(i) {}
-CacheValue::CacheValue(long l): type_(DataType::LONG), data_(l) {}
-CacheValue::CacheValue(float f): type_(DataType::FLOAT), data_(f) {}
-CacheValue::CacheValue(double d): type_(DataType::DOUBLE), data_(d) {}
-CacheValue::CacheValue(bool b): type_(DataType::BOOL), data_(b) {}
-CacheValue::CacheValue(string s, bool is_object): type_(is_object ? DataType::JSON_STRING : DataType::STRING), data_(s) {}
+CacheValue::CacheValue(const int i): type_(DataType::INT), data_(i) {}
+CacheValue::CacheValue(const long l): type_(DataType::LONG), data_(l) {}
+CacheValue::CacheValue(const float f): type_(DataType::FLOAT), data_(f) {}
+CacheValue::CacheValue(const double d): type_(DataType::DOUBLE), data_(d) {}
+CacheValue::CacheValue(const bool b): type_(DataType::BOOL), data_(b) {}
+CacheValue::CacheValue(const string& s, bool is_object): type_(is_object ? DataType::JSON_STRING : DataType::STRING), data_(s) {}
 CacheValue& CacheValue::operator=(CacheValue&& other) {
   this->~CacheValue();
   new (this) CacheValue(std::move(other));
