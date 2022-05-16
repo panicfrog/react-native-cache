@@ -56,32 +56,32 @@ CacheValue DiskKVStorage::getValue(string key) const {
     //    6 -> json string
     switch (type) {
       case 0: {
-        int r0 = *reinterpret_cast<int *>(const_cast<char *>(value));
-        return CacheValue(r0);
+        const int v = *reinterpret_cast<const int *>(value);
+        return CacheValue(v);
       }
       case 1: {
-        long r0 = *reinterpret_cast<long *>(const_cast<char *>(value));
-        return CacheValue(r0);
+        const long v = *reinterpret_cast<const long *>(value);
+        return CacheValue(v);
       }
       case 2: {
-        float r0 = *reinterpret_cast<float *>(const_cast<char *>(value));
-        return CacheValue(r0);
+        const float v = *reinterpret_cast<const float *>(value);
+        return CacheValue(v);
       }
       case 3: {
-        double r0 = *reinterpret_cast<double *>(const_cast<char *>(value));
-        return CacheValue(r0);
+        const double v = *reinterpret_cast<const double *>(value);
+        return CacheValue(v);
       }
       case 4: {
-        bool r0 =  *reinterpret_cast<bool *>(const_cast<char *>(value));
-        return CacheValue(r0);
+        const bool v =  *reinterpret_cast<const bool *>(value);
+        return CacheValue(v);
       }
       case 5: {
-        std::string r0(value);
-        return CacheValue(r0, false);
+        std::string v(value);
+        return CacheValue(v, false);
       }
       case 6: {
-        std::string r0(value);
-        return CacheValue(r0, true);
+        std::string v(value);
+        return CacheValue(v, true);
       }
       default: return CacheValue();
     }
@@ -90,7 +90,7 @@ CacheValue DiskKVStorage::getValue(string key) const {
 }
 
 
-void DiskKVStorage::inner_save(string& key, const char * value, int size, int type) const {
+void DiskKVStorage::inner_save(const string& key, const char * value, int size, int type) const {
     SQLite::Statement query(db, "INSERT INTO metadata (key, value, size, type) VALUES (?1, ?2, ?3, ?4) ON CONFLICT (key) DO UPDATE SET value = ?5, size = ?6, type = ?7;");
     query.bind(1, key);
     query.bind(2, value, size);
@@ -102,37 +102,37 @@ void DiskKVStorage::inner_save(string& key, const char * value, int size, int ty
     query.exec();
 }
 
-void DiskKVStorage::save(string key, int value) const {
-  char * _value = reinterpret_cast<char *> (&value);
+void DiskKVStorage::save(const string key, const int value) const {
+  const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
   inner_save(key, _value, size, 0);
 }
 
-void DiskKVStorage::save(string key, long value) const {
-  char * _value = reinterpret_cast<char *> (&value);
+void DiskKVStorage::save(const string key, const long value) const {
+  const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
   inner_save(key, _value, size, 1);
 }
 
-void DiskKVStorage::save(string key, float value) const {
-  char * _value = reinterpret_cast<char *> (&value);
+void DiskKVStorage::save(const string key, const float value) const {
+  const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
   inner_save(key, _value, size, 2);
 }
 
-void DiskKVStorage::save(string key, double value) const {
-  char * _value = reinterpret_cast<char *> (&value);
+void DiskKVStorage::save(const string key, const double value) const {
+  const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
   inner_save(key, _value, size, 3);
 }
 
-void DiskKVStorage::save(string key, bool value) const {
-  char * _value = reinterpret_cast<char *> (&value);
+void DiskKVStorage::save(const string key, const bool value) const {
+  const char * _value = reinterpret_cast<const char *> (&value);
   int size = sizeof(value);
   inner_save(key, _value, size, 4);
 }
 
-void DiskKVStorage::save(string key, string value, bool is_object) const {
+void DiskKVStorage::save(const string key, const string value, const bool is_object) const {
   const char * _value = value.data();
   int size = int(value.size());
   int type = 5;
