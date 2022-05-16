@@ -2,6 +2,8 @@ import { NativeModules, Platform } from 'react-native';
 
 declare interface Global {
   jsimultiply(a: number, b: number): number
+  getValueForKey(key: string): boolean | number | string | undefined
+  setValueForKey(key: string, value: boolean | number | string): undefined
 }
 declare const global: Global
 
@@ -28,4 +30,12 @@ export function multiply(a: number, b: number): Promise<number> {
 
 export function jsimultiply(a: number, b: number): number {
   return global.jsimultiply(a, b)
+}
+
+export function get(key: string): boolean | number | string | undefined {
+  return global.getValueForKey(key)
+}
+
+export function set(key: string, value: boolean | number | string ): undefined {
+  return global.setValueForKey(key, value)
 }
