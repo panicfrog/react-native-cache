@@ -48,14 +48,23 @@ export default function App() {
       <Text>JSI Result: {jsiresult}</Text>
       <View style={{height: 20}}/>
       <View style={styles.row}>
-        <TextInput style={styles.textInput} onChangeText={onSetKeyChanged} placeholder={"key"}></TextInput>
+        <TextInput 
+          style={styles.textInput} 
+          onChangeText={onSetKeyChanged} 
+          placeholder={"key"} />
         <View style={{width: 15}}/>
-        <TextInput style={styles.textInput} onChangeText={onValueChanged} placeholder={"value"}></TextInput>
+        <TextInput 
+          style={styles.textInput} 
+          onChangeText={onValueChanged} 
+          placeholder={"value"} />
         <Button style={{width: 35}} onPress={onSetPress} title={'set'} />
       </View>
       <View style={{height: 20}}/>
       <View style={styles.row}>
-        <TextInput style={styles.textInput} onChangeText={onGetKeyChanged} placeholder={"key"}></TextInput>
+        <TextInput 
+          style={styles.textInput} 
+          onChangeText={onGetKeyChanged} 
+          placeholder={"key"} />
         <View style={{width: 15}}/>
         <Text style={{flex: 1}} >{kvResult}</Text>
         <Button style={{width: 35}} onPress={onGetPress} title={'get'} />
