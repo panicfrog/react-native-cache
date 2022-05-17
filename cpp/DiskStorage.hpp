@@ -32,7 +32,7 @@ public:
 private:
   string path;
   SQLite::Database db;
-  void inner_save(const string& key, const char * value, const int size, const int type) const;
+  void innerSave(const string& key, const char * value, const int size, const int type) const;
 };
 
 }

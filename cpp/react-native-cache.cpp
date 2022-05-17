@@ -14,7 +14,7 @@ namespace cache {
     return a * b;
   }
 
-void setup_jsimultiply(Runtime& jsiRuntime)
+void setupJsimultiply(Runtime& jsiRuntime)
 {
   auto impl = [](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
     if (count != 2)
@@ -139,7 +139,7 @@ void setupKvGet(Runtime& jsiRuntime, shared_ptr<DiskKVStorage> kv)
     } catch (std::exception& e) {
       std::cout << "SQLite exception: " << e.what() << std::endl;
     }
-    setup_jsimultiply(jsiRuntime);
+    setupJsimultiply(jsiRuntime);
   }
 
   
