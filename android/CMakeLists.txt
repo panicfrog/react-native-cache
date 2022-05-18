@@ -30,6 +30,8 @@ if (EXISTS "${LIBRN_DIR}/libjsi.so")
           SHARED
           ../cpp/react-native-cache.cpp
           ./cpp-adapter.cpp
+          ../cpp/CacheValue.cpp
+          ../cpp/DiskStorage.cpp
   )
 else()
   # React Native 0.65.x and below
@@ -40,6 +42,8 @@ else()
           "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi/jsi/jsi.cpp"
           ../cpp/react-native-cache.cpp
           ./cpp-adapter.cpp
+          ../cpp/CacheValue.cpp
+          ../cpp/DiskStorage.cpp
   )
 endif()
 
@@ -55,6 +59,8 @@ find_library(
         NO_CMAKE_FIND_ROOT_PATH
 )
 
+add_subdirectory(../thirdparty/SQLiteCpp SQLiteCppOutDir)
+
 set_target_properties(
         ${PACKAGE_NAME} PROPERTIES
         CXX_STANDARD 17
@@ -67,5 +73,6 @@ target_link_libraries(
         ${LOG_LIB}
         ${REACT_NATIVE_JNI_LIB}
         ${JSI_LIB}
+        SQLiteCpp
         android
 )

@@ -11,10 +11,12 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
 
+import java.io.File;
+
 @ReactModule(name = CacheModule.NAME)
 public class CacheModule extends ReactContextBaseJavaModule {
     public static final String NAME = "Cache";
-    private native void nativeInstall(long jsi);
+    private native void nativeInstall(long jsi, String path);
 
   public CacheModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -36,7 +38,8 @@ public class CacheModule extends ReactContextBaseJavaModule {
       System.loadLibrary("cpp");
       JavaScriptContextHolder jsContext = getReactApplicationContext().getJavaScriptContextHolder();
       if (jsContext.get() != 0) {
-        nativeInstall(jsContext.get());
+        String path = getReactApplicationContext().getFilesDir() + File.separator + "jsi_cache.db";
+        nativeInstall(jsContext.get(), path);
         Log.i(NAME, "Installing cache Success");
         return true;
       } else {
