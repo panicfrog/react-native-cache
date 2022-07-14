@@ -6,7 +6,6 @@
 //
 
 #include "DiskStorage.hpp"
-#include <cstdio>
 
 namespace cache {
 
@@ -39,17 +38,16 @@ inline const string generateKey(const string& key, const string& keyNamespace) {
 
 inline const string spliteKey(const string& key, const string& keyNamespace) {
   auto const pos = key.find_last_of(KEY_DELIMINTER);
+  // TODO: verify namespace
   return key.substr(0, pos);
 }
 
 
 DiskKVStorage::DiskKVStorage(const string& path): path (path), db (path, SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE) {
-  printf("路径：%s",path.data() );
   db.exec(initSql());
 }
 
 DiskKVStorage::DiskKVStorage(const char *path): path (path), db (path, SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE) {
-  printf("路径：%s", path);
   db.exec(initSql());
 }
 
