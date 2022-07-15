@@ -63,19 +63,20 @@ rm -rf ../build/simulator/${SIM}
 done
 
 #merge static library
-mkdir -p merge/simulator
-mkdir -p merge/devices
+mkdir -p ../build/merge/simulator
+mkdir -p ../build/merge/devices
 
-libtool -static simulator/*.a -o merge/simulator/libHCache.a
-libtool -static devices/*.a -o merge/devices/libHCache.a
+libtool -static ../build/simulator/*.a -o ../build/merge/simulator/libHCache.a
+libtool -static ../build/devices/*.a -o ../build/merge/devices/libHCache.a
 
 xcodebuild -create-xcframework \
-  -library merge/simulator/libHCache.a \
-  -library merge/devices/libHCache.a \
-  -output HCache.xcframework
+  -library ../build/merge/simulator/libHCache.a \
+  -library ../build/merge/devices/libHCache.a \
+  -output ../build/HCache.xcframework
 
 # clean 
-rm -rf devices
-rm -rf merge
-rm -rf simulator
+rm -rf ../build/devices
+rm -rf ../build/merge
+rm -rf ../build/simulator
+rm -rf ../tem
 
