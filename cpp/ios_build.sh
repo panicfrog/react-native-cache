@@ -54,7 +54,10 @@ libs=("libHCache.a" "libSQLiteCpp.a" "libsqlite3.a")
 
 for LIB in ${libs[@]} 
 do 
-lipo -create ../build/simulator/SIMULATOR/${LIB} ../build/simulator/SIMULATOR64/${LIB} ../build/simulator/SIMULATORARM64/${LIB} -output ../build/simulator/${LIB}
+lipo -create ../build/simulator/SIMULATOR/${LIB} \
+  ../build/simulator/SIMULATOR64/${LIB} \
+  ../build/simulator/SIMULATORARM64/${LIB} \
+  -output ../build/simulator/${LIB}
 done
 
 for SIM in ${sims[@]}
