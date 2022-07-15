@@ -9,11 +9,8 @@ sims=("SIMULATOR" "SIMULATOR64" "SIMULATORARM64")
 
 for SIM in ${sims[@]}
 do 
-
 P="build/simulator/${SIM}"
-
 mkdir -p "${P}"
-
 done
 
 mkdir tem && cd tem
@@ -32,9 +29,7 @@ cp SQLiteCppOutDir/sqlite3/Release-iphoneos/* ../build/devices/
 
 for SIM in ${sims[@]}
 do 
-
 P="../build/simulator/${SIM}"
-
 rm -rf ./*
 
 cmake .. -G Xcode \
@@ -47,7 +42,6 @@ cmake --build . --config Release
 cp Release-iphonesimulator/* ${P}/
 cp SQLiteCppOutDir/Release-iphonesimulator/* ${P}/
 cp SQLiteCppOutDir/sqlite3/Release-iphonesimulator/* ${P}/
-
 done
 
 libs=("libHCache.a" "libSQLiteCpp.a" "libsqlite3.a")
