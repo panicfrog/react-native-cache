@@ -68,7 +68,9 @@ libtool -static ../build/devices/*.a -o ../build/merge/devices/libHCache.a
 
 xcodebuild -create-xcframework \
   -library ../build/merge/simulator/libHCache.a \
+  -headers ../include \
   -library ../build/merge/devices/libHCache.a \
+  -headers ../include \
   -output ../build/HCache.xcframework
 
 # clean 

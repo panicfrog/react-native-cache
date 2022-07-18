@@ -9,15 +9,35 @@ include_directories(
 	${PACKAGE_NAME}
 	"."
 	)
+  
+set(HCACHE_SRC
+    ${PROJECT_SOURCE_DIR}/CacheValue.cpp
+    ${PROJECT_SOURCE_DIR}/DiskStorage.cpp
+)
 
-add_library(
-	${PACKAGE_NAME}
-	STATIC
-	CacheValue.cpp
-	CacheValue.hpp
-	DiskStorage.cpp
-	DiskStorage.hpp
-	)
+set(HCACHE_INC
+	${PROJECT_SOURCE_DIR}/include/CacheValue.hpp
+	${PROJECT_SOURCE_DIR}/include/DiskStorage.hpp
+)
+
+include_directories(./include)
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
+	add_library(
+		${PACKAGE_NAME}
+		STATIC
+		${HCACHE_SRC}
+		${HCACHE_INC}
+		)
+else()
+	add_library(
+		${PACKAGE_NAME}
+		SHARED
+    	${HCACHE_SRC}
+    	${HCACHE_INC}
+		)
+endif()
+
 
 add_subdirectory(../thirdparty/SQLiteCpp SQLiteCppOutDir)
 
