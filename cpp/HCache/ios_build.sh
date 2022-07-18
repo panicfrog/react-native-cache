@@ -16,15 +16,15 @@ done
 mkdir tem && cd tem
 
 cmake .. -G Xcode \
--DCMAKE_TOOLCHAIN_FILE=../../thirdparty/ios-cmake/ios.toolchain.cmake \
+-DCMAKE_TOOLCHAIN_FILE=../thirdparty/ios-cmake/ios.toolchain.cmake \
 -DPLATFORM=OS \
 -DDEPLOYMENT_TARGET=10.0
 
 cmake --build . --config Release
 
 cp Release-iphoneos/* ../build/devices/
-cp SQLiteCppOutDir/Release-iphoneos/* ../build/devices/
-cp SQLiteCppOutDir/sqlite3/Release-iphoneos/* ../build/devices/
+cp HCache/build/thirdparty/SQLiteCpp/Release-iphoneos/* ../build/devices/
+cp HCache/build/thirdparty/SQLiteCpp/sqlite3/Release-iphoneos/* ../build/devices/
 
 
 for SIM in ${sims[@]}
@@ -33,15 +33,15 @@ P="../build/simulator/${SIM}"
 rm -rf ./*
 
 cmake .. -G Xcode \
--DCMAKE_TOOLCHAIN_FILE=../../thirdparty/ios-cmake/ios.toolchain.cmake \
+-DCMAKE_TOOLCHAIN_FILE=../thirdparty/ios-cmake/ios.toolchain.cmake \
 -DPLATFORM=${SIM} \
 -DDEPLOYMENT_TARGET=10.0
 
 cmake --build . --config Release
 
 cp Release-iphonesimulator/* ${P}/
-cp SQLiteCppOutDir/Release-iphonesimulator/* ${P}/
-cp SQLiteCppOutDir/sqlite3/Release-iphonesimulator/* ${P}/
+cp HCache/build/thirdparty/SQLiteCpp/Release-iphoneos/* ${P}/
+cp HCache/build/thirdparty/SQLiteCpp/sqlite3/Release-iphoneos/* ${P}/
 done
 
 libs=("libHCache.a" "libSQLiteCpp.a" "libsqlite3.a")

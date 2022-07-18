@@ -22,7 +22,7 @@ set(HCACHE_INC
 
 include_directories(
 	./include
-	../thirdparty/SQLiteCpp/include
+	./thirdparty/SQLiteCpp/include
 	)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
@@ -42,7 +42,7 @@ else()
 endif()
 
 
-add_subdirectory(../thirdparty/SQLiteCpp SQLiteCppOutDir)
+add_subdirectory(./thirdparty/SQLiteCpp)
 
 set_target_properties(
 	${PACKAGE_NAME} PROPERTIES
