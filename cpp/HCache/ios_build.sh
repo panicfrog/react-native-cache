@@ -40,8 +40,8 @@ cmake .. -G Xcode \
 cmake --build . --config Release
 
 cp Release-iphonesimulator/* ${P}/
-cp HCache/build/thirdparty/SQLiteCpp/Release-iphoneos/* ${P}/
-cp HCache/build/thirdparty/SQLiteCpp/sqlite3/Release-iphoneos/* ${P}/
+cp thirdparty/SQLiteCpp/Release-iphonesimulator/* ${P}/
+cp thirdparty/SQLiteCpp/sqlite3/Release-iphonesimulator/* ${P}/
 done
 
 libs=("libHCache.a" "libSQLiteCpp.a" "libsqlite3.a")
@@ -59,7 +59,7 @@ do
 rm -rf ../build/simulator/${SIM}
 done
 
-#merge static library
+# merge static library
 mkdir -p ../build/merge/simulator
 mkdir -p ../build/merge/devices
 
