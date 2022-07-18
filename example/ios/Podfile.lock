@@ -10,6 +10,7 @@ PODS:
     - React-jsi (= 0.64.2)
     - ReactCommon/turbomodule/core (= 0.64.2)
   - glog (0.3.5)
+  - HCache (0.0.1)
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -204,8 +205,8 @@ PODS:
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
   - react-native-cache (0.1.0):
+    - HCache
     - React-Core
-    - SQLiteCpp
   - React-perflogger (0.64.2)
   - React-RCTActionSheet (0.64.2):
     - React-Core/RCTActionSheetHeaders (= 0.64.2)
@@ -270,7 +271,6 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
-  - SQLiteCpp (3.1.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -278,6 +278,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - HCache (from `../../cpp/HCache`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -304,7 +305,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - SQLiteCpp (from `../../thirdparty/SQLiteCppIOS`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -320,6 +320,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  HCache:
+    :path: "../../cpp/HCache"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -368,8 +370,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  SQLiteCpp:
-    :path: "../../thirdparty/SQLiteCppIOS"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -379,6 +379,7 @@ SPEC CHECKSUMS:
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
   FBReactNativeSpec: 86c42a072a9e39223959e317e2077f61b43bdd28
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
+  HCache: 7d23d90fd56bba030c0e5ce10241ff40d9ce0edf
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
   RCTTypeSafety: c1f31d19349c6b53085766359caac425926fafaa
@@ -390,7 +391,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-cache: 790c03c83ae16eec0136a5a078d3e8c0bcc64178
+  react-native-cache: 3f3f240149e21750abfdd5bfed194045289dd4f7
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -403,9 +404,8 @@ SPEC CHECKSUMS:
   React-RCTVibration: 24600e3b1aaa77126989bc58b6747509a1ba14f3
   React-runtimeexecutor: a9904c6d0218fb9f8b19d6dd88607225927668f9
   ReactCommon: 149906e01aa51142707a10665185db879898e966
-  SQLiteCpp: 11e662b3a502afbebd8e78f115c793b07fd6affe
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
-PODFILE CHECKSUM: 2ea7ca9abfe848be08b4f0493b5f37f786043cb6
+PODFILE CHECKSUM: 4adc0f408dbd2eb1da2f0f3039897e3c8443c090
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
