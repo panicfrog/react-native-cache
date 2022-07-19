@@ -8,7 +8,8 @@ include_directories(
         "${NODE_MODULES_DIR}/react-native/React"
         "${NODE_MODULES_DIR}/react-native/React/Base"
         "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi"
-        "../cpp"
+        "../cpp/HCache/include"
+	    "../cpp/Bridge"
         "."
 )
 
@@ -28,10 +29,8 @@ if (EXISTS "${LIBRN_DIR}/libjsi.so")
   add_library(
           ${PACKAGE_NAME}
           SHARED
-          ../cpp/react-native-cache.cpp
+          ../cpp/Bridge/react-native-cache.cpp
           ./cpp-adapter.cpp
-          ../cpp/CacheValue.cpp
-          ../cpp/DiskStorage.cpp
   )
 else()
   # React Native 0.65.x and below
@@ -40,10 +39,8 @@ else()
           ${PACKAGE_NAME}
           SHARED
           "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi/jsi/jsi.cpp"
-          ../cpp/react-native-cache.cpp
+          ../cpp/Bridge/react-native-cache.cpp
           ./cpp-adapter.cpp
-          ../cpp/CacheValue.cpp
-          ../cpp/DiskStorage.cpp
   )
 endif()
 
@@ -59,7 +56,7 @@ find_library(
         NO_CMAKE_FIND_ROOT_PATH
 )
 
-add_subdirectory(../thirdparty/SQLiteCpp SQLiteCppOutDir)
+add_subdirectory(../cpp/HCache HCacheDir)
 
 set_target_properties(
         ${PACKAGE_NAME} PROPERTIES
@@ -73,6 +70,6 @@ target_link_libraries(
         ${LOG_LIB}
         ${REACT_NATIVE_JNI_LIB}
         ${JSI_LIB}
-        SQLiteCpp
+        HCache
         android
 )

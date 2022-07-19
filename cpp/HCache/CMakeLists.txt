@@ -6,24 +6,19 @@ set (BUILD_DIR ./build)
 project(${PACKAGE_NAME})
 
 include_directories(
-	${PACKAGE_NAME}
-	"."
+	${CMAKE_CURRENT_SOURCE_DIR}/include
+	${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/SQLiteCpp/include
 	)
-  
+
 set(HCACHE_SRC
-    ${PROJECT_SOURCE_DIR}/src/CacheValue.cpp
-    ${PROJECT_SOURCE_DIR}/src/DiskStorage.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/CacheValue.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/DiskStorage.cpp
 )
 
 set(HCACHE_INC
-	${PROJECT_SOURCE_DIR}/include/CacheValue.hpp
-	${PROJECT_SOURCE_DIR}/include/DiskStorage.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/include/CacheValue.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/include/DiskStorage.hpp
 )
-
-include_directories(
-	./include
-	./thirdparty/SQLiteCpp/include
-	)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
 	add_library(
@@ -36,13 +31,13 @@ else()
 	add_library(
 		${PACKAGE_NAME}
 		SHARED
-    	${HCACHE_SRC}
-    	${HCACHE_INC}
+        ${HCACHE_SRC}
+        ${HCACHE_INC}
 		)
 endif()
 
 
-add_subdirectory(./thirdparty/SQLiteCpp)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/SQLiteCpp)
 
 set_target_properties(
 	${PACKAGE_NAME} PROPERTIES
