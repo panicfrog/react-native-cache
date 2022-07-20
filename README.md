@@ -18,9 +18,28 @@ import { multiply } from "react-native-cache";
 const result = await multiply(3, 7);
 ```
 
-## Contributing
+## Example
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+``` shell
+# in react-native-cache directory install dependency
+$ yarn 
+```
+
+### iOS
+
+``` shell
+$ cd cpp/HCache && ./ios_build.sh
+# back react-native-cache director
+$ yarn example ios
+```
+
+### Andorid
+
+``` shell
+$ yarn example android
+```
+
+
 
 ## License
 
