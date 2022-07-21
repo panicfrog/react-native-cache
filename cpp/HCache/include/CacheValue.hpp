@@ -25,44 +25,44 @@ class CacheValue {
     bool b;
     string s;
     Data(){};
-    Data(const int i): i (i){}
-    Data(const long l): l (l){}
-    Data(const float f): f (f){}
-    Data(const double d): d (d){}
-    Data(const bool b): b (b){}
-    Data(const string& s): s (s){}
+    explicit Data(const int i): i (i){}
+    explicit Data(const long l): l (l){}
+    explicit Data(const float f): f (f){}
+    explicit Data(const double d): d (d){}
+    explicit Data(const bool b): b (b){}
+    explicit Data(const string& s): s (s){}
     ~Data() {};
   };
   
 public:
   enum DataType { INT, LONG, FLOAT, DOUBLE, BOOL, STRING, JSON_STRING, NULL_VALUE };
   CacheValue();
-  CacheValue(const int i);
-  CacheValue(const long l);
-  CacheValue(const float f);
-  CacheValue(const double d);
-  CacheValue(const bool b);
+  explicit CacheValue(int i);
+  explicit CacheValue(long l);
+  explicit CacheValue(float f);
+  explicit CacheValue(double d);
+  explicit CacheValue(bool b);
   CacheValue(const string& s, bool is_object);
   
   CacheValue(CacheValue&& value){};
   CacheValue& operator=(CacheValue&& other);
-  ~CacheValue() {}
+  ~CacheValue() = default;
   
-  bool isNull() const;
-  bool isInt() const;
-  bool isLong() const;
-  bool isFloat() const;
-  bool isDouble() const;
-  bool isBool() const;
-  bool isString() const;
-  bool isJsonString() const;
-  int    getInt() const;
-  bool   getBool() const;
-  long   getLong() const;
-  float  getFloat() const;
-  double getDouble() const;
-  string getString() const;
-  string getJsonString() const;
+  [[nodiscard]] bool isNull() const;
+  [[nodiscard]] bool isInt() const;
+  [[nodiscard]] bool isLong() const;
+  [[nodiscard]] bool isFloat() const;
+  [[nodiscard]] bool isDouble() const;
+  [[nodiscard]] bool isBool() const;
+  [[nodiscard]] bool isString() const;
+  [[nodiscard]] bool isJsonString() const;
+  [[nodiscard]] int    getInt() const;
+  [[nodiscard]] bool   getBool() const;
+  [[nodiscard]] long   getLong() const;
+  [[nodiscard]] float  getFloat() const;
+  [[nodiscard]] double getDouble() const;
+  [[nodiscard]] string getString() const;
+  [[nodiscard]] string getJsonString() const;
 private:
   DataType type_;
   Data data_;
