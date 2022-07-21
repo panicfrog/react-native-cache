@@ -8,8 +8,6 @@
 #include "DiskStorage.hpp"
 
 namespace cache {
-    const string DiskKVStorage::DEFAULT_NAMESPACE = "global";
-    const string DiskKVStorage::KEY_DELIMITER = "_";
 inline string initSql(const string& delimiter) {
   /// TOOD: use constexpr to get sql string in compile-time
   /*

@@ -30,8 +30,8 @@ public:
   void save(const string& key, double value) const;
   void save(const string& key, const string& value, bool is_object) const;
 private:
-    static const string DEFAULT_NAMESPACE;
-    static const string KEY_DELIMITER;
+    inline static const string DEFAULT_NAMESPACE = "global";
+    inline static const string KEY_DELIMITER = "_";
   string path;
   SQLite::Database db;
   void innerSave(const string& key, const char * value, int size, int type) const;
