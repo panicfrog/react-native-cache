@@ -37,5 +37,30 @@ private:
   void innerSave(const string& key, const char * value, int size, int type) const;
 };
 
+
+class KVSingleton{
+public:
+    static KVSingleton& getInstance(){
+        static KVSingleton instance;
+        return instance;
+    }
+    KVSingleton(const KVSingleton&)= delete;
+    KVSingleton& operator=(const KVSingleton&)= delete;
+    DiskKVStorage* get_kv(const string& path) {
+        std::call_once(this->initKVFlag, _initKV, path);
+        return KVSingleton::kv;
+    }
+private:
+    std::once_flag initKVFlag;
+    static DiskKVStorage *kv;
+    static DiskKVStorage* _initKV(const string& path) {
+        kv = new DiskKVStorage{path};
+        return kv;
+    }
+
+    KVSingleton()= default;
+    ~KVSingleton()= default;
+};
+
 }
 #endif /* DiskStorage_hpp */

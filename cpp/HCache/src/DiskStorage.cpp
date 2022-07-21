@@ -9,7 +9,7 @@
 
 namespace cache {
 inline string initSql(const string& delimiter) {
-  /// TOOD: use constexpr to get sql string in compile-time
+  /// TODO: use constexpr to get sql string in compile-time
   /*
    CREATE TABLE IF NOT EXISTS metadata (
    key TEXT PRIMARY KEY,
