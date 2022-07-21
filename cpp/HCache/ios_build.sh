@@ -23,8 +23,8 @@ cmake .. -G Xcode \
 cmake --build . --config Release
 
 cp Release-iphoneos/* ../build/devices/
-cp HCache/build/thirdparty/SQLiteCpp/Release-iphoneos/* ../build/devices/
-cp HCache/build/thirdparty/SQLiteCpp/sqlite3/Release-iphoneos/* ../build/devices/
+cp thirdparty/SQLiteCpp/Release-iphoneos/* ../build/devices/
+cp thirdparty/SQLiteCpp/sqlite3/Release-iphoneos/* ../build/devices/
 
 
 for SIM in ${sims[@]}
