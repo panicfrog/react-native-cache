@@ -13,12 +13,13 @@ include_directories(
 set(HCACHE_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/CacheValue.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/DiskStorage.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/src/KVSingleton.cpp
 )
 
 set(HCACHE_INC
 	${CMAKE_CURRENT_SOURCE_DIR}/include/CacheValue.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/include/DiskStorage.hpp
-)
+		${CMAKE_CURRENT_SOURCE_DIR}/include/KVSingleton.hpp)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "iOS")
 	add_library(

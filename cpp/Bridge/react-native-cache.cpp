@@ -4,6 +4,7 @@
 #include <SQLiteCpp/VariadicBind.h>
 #include <iostream>
 #include "DiskStorage.hpp"
+#include "KVSingleton.hpp"
 
 using namespace facebook::jsi;
 using namespace std;
@@ -42,7 +43,7 @@ void setupJsimultiply(Runtime& jsiRuntime)
   };
 
 
-  void setupKvSet(Runtime& jsiRuntime, shared_ptr<DiskKVStorage> kv)
+  void setupKvSet(Runtime& jsiRuntime, DiskKVStorage* kv)
   {
     
     auto impl = [kv](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
@@ -79,7 +80,7 @@ void setupJsimultiply(Runtime& jsiRuntime)
     jsiRuntime.global().setProperty(jsiRuntime, "setValueForKey", move(setValueForKey));
   }
 
-void setupKvGet(Runtime& jsiRuntime, shared_ptr<DiskKVStorage> kv)
+void setupKvGet(Runtime& jsiRuntime, DiskKVStorage* kv)
 {
   
   auto impl = [kv](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
@@ -133,9 +134,10 @@ void setupKvGet(Runtime& jsiRuntime, shared_ptr<DiskKVStorage> kv)
 
   void install(Runtime& jsiRuntime, const char* dbPath) {
     try {
-      auto sharedKV = make_shared<DiskKVStorage>(DiskKVStorage(dbPath));
-      setupKvSet(jsiRuntime, sharedKV);
-      setupKvGet(jsiRuntime, sharedKV);
+      auto& singleton = KVSingleton::getInstance();
+      DiskKVStorage* kv = singleton.getKV(dbPath);
+      setupKvSet(jsiRuntime, kv);
+      setupKvGet(jsiRuntime, kv);
     } catch (std::exception& e) {
       std::cout << "SQLite exception: " << e.what() << std::endl;
     }
