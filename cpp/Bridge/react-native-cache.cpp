@@ -6,7 +6,7 @@
 #include "DiskStorage.hpp"
 #include "KVSingleton.hpp"
 
-using namespace facebook::jsi;
+using namespace facebook;
 using namespace std;
 using namespace cache;
 
@@ -15,8 +15,9 @@ namespace cache {
     return a * b;
   }
 
-void setupJsimultiply(Runtime& jsiRuntime)
+void setupJsimultiply(jsi::Runtime& jsiRuntime)
 {
+  using namespace jsi;
   auto impl = [](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
     if (count != 2)
     {
@@ -43,8 +44,9 @@ void setupJsimultiply(Runtime& jsiRuntime)
   };
 
 
-  void setupKvSet(Runtime& jsiRuntime, DiskKVStorage* kv)
+  void setupKvSet(facebook::jsi::Runtime& jsiRuntime, DiskKVStorage* kv)
   {
+    using namespace jsi;
     
     auto impl = [kv](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
       if (count != 2)
@@ -80,9 +82,9 @@ void setupJsimultiply(Runtime& jsiRuntime)
     jsiRuntime.global().setProperty(jsiRuntime, "setValueForKey", move(setValueForKey));
   }
 
-void setupKvGet(Runtime& jsiRuntime, DiskKVStorage* kv)
+void setupKvGet(jsi::Runtime& jsiRuntime, DiskKVStorage* kv)
 {
-  
+  using namespace jsi;
   auto impl = [kv](Runtime& runtime, const Value& thisVlaue, const Value * arguments, size_t count) -> Value {
     if (count != 1)
     {
@@ -132,7 +134,7 @@ void setupKvGet(Runtime& jsiRuntime, DiskKVStorage* kv)
 }
 
 
-  void install(Runtime& jsiRuntime, const char* dbPath) {
+  void install(jsi::Runtime& jsiRuntime, const char* dbPath) {
     try {
       auto& singleton = KVSingleton::getInstance();
       DiskKVStorage* kv = singleton.getKV(dbPath);
@@ -143,7 +145,6 @@ void setupKvGet(Runtime& jsiRuntime, DiskKVStorage* kv)
     }
     setupJsimultiply(jsiRuntime);
   }
-
   
 
 }

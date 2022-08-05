@@ -24,12 +24,10 @@ const Cache = NativeModules.Cache
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Cache.multiply(a, b);
-}
-
-export function jsimultiply(a: number, b: number): number {
-  return global.jsimultiply(a, b)
+if (Cache) {
+  if (typeof Cache.install === 'function') {
+    Cache.install();
+  }
 }
 
 export function get(key: string): boolean | number | string | undefined {

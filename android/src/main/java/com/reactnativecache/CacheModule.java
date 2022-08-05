@@ -28,11 +28,8 @@ public class CacheModule extends ReactContextBaseJavaModule {
         return NAME;
     }
 
-  @Override
-  public void initialize() {
-    install();
-  }
 
+  @ReactMethod(isBlockingSynchronousMethod = true)
   public boolean install() {
     try {
       System.loadLibrary("cpp");
@@ -52,12 +49,4 @@ public class CacheModule extends ReactContextBaseJavaModule {
     }
   }
 
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
-    @ReactMethod
-    public void multiply(int a, int b, Promise promise) {
-        promise.resolve(nativeMultiply(a, b));
-    }
-
-    public static native int nativeMultiply(int a, int b);
 }

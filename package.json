@@ -1,5 +1,5 @@
 {
-  "name": "react-native-cache",
+  "name": "react-native-hcache",
   "version": "0.1.0",
   "description": "react native new architecture -- jsi",
   "main": "lib/commonjs/index",
@@ -14,9 +14,12 @@
     "ios",
     "cpp",
     "react-native-cache.podspec",
+    "!android/.cxx",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
+    "!cpp/HCache/build",
+    "!cpp/HCache/temp",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__"

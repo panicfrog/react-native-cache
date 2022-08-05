@@ -1,11 +1,9 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
-import { multiply, jsimultiply, get, set } from 'react-native-cache';
+import { get, set } from 'react-native-cache';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-  const [jsiresult, setJSIResult] = React.useState<number | undefined>();
 
   const [setKey, onSetKeyChanged] = React.useState('')
   const [value, onValueChanged] = React.useState('')
@@ -14,17 +12,6 @@ export default function App() {
   const [kvResult, setKVResult] = React.useState('')
 
   React.useEffect(() => {
-    let start = performance.now()
-    multiply(3, 7).then((res) => {
-      let end = performance.now()
-      console.log(`非JSI调用耗时: ${end-start} ms`)
-      setResult(res)
-    });
-    let jsiStart = performance.now()
-    let jsiRes = jsimultiply(3, 7)
-    let jsiEnd = performance.now()
-    console.log(`JSI调用耗时: ${jsiEnd-jsiStart} ms`)
-    setJSIResult(jsiRes)
   }, []);
 
   const onSetPress = () => {
@@ -44,8 +31,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
-      <Text>JSI Result: {jsiresult}</Text>
       <View style={{height: 20}}/>
       <View style={styles.row}>
         <TextInput 

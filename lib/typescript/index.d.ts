@@ -1,1 +1,2 @@
-export declare function multiply(a: number, b: number): Promise<number>;
+export declare function get(key: string): boolean | number | string | undefined;
+export declare function set(key: string, value: boolean | number | string): undefined;
