@@ -19,7 +19,7 @@ target 'CacheExample' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'react-native-cache', :path => '../..'
-  pod 'HCacheiOS', :path => '/Users/yyp/Source/cpp/hcache_example/iOS/HCacheExample/HCache'
+  pod 'HCacheiOS', :path => '../../cpp/HCache'
 
   # Enables Flipper.
   #

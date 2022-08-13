@@ -278,7 +278,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - HCacheiOS (from `/Users/yyp/Source/cpp/hcache_example/iOS/HCacheExample/HCache`)
+  - HCacheiOS (from `../../cpp/HCache`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -321,7 +321,7 @@ EXTERNAL SOURCES:
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   HCacheiOS:
-    :path: "/Users/yyp/Source/cpp/hcache_example/iOS/HCacheExample/HCache"
+    :path: "../../cpp/HCache"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -406,6 +406,6 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
-PODFILE CHECKSUM: f2ac26d6c9431a4c7ddceedd07f211484a724ca1
+PODFILE CHECKSUM: f4752dc492aef89cab7d781159b32f3f1769d8d2
 
 COCOAPODS: 1.11.3

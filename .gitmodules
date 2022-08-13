@@ -1,0 +1,3 @@
+[submodule "cpp/HCache"]
+	path = cpp/HCache
+	url = https://github.com/panicfrog/HCache.git
