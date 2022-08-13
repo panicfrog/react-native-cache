@@ -58,15 +58,15 @@ void setupJsimultiply(jsi::Runtime& jsiRuntime)
       
       if (arguments[1].isNumber()) {
         double value = arguments[1].getNumber();
-        kv->save(key, value);
+        kv->saveD(key, value);
       }
       else if (arguments[1].isString()) {
         string value = arguments[1].getString(runtime).utf8(runtime);
-        kv->save(key, value, false);
+        kv->saveS(key, value, false);
       }
       else if (arguments[1].isBool()) {
         bool value = arguments[1].getBool();
-        kv->save(key, value);
+        kv->saveB(key, value);
       }
       else {
         throw JSINativeException("second argument expected 'string | bool | number' ");

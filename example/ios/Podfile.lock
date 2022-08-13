@@ -10,7 +10,7 @@ PODS:
     - React-jsi (= 0.64.2)
     - ReactCommon/turbomodule/core (= 0.64.2)
   - glog (0.3.5)
-  - HCache (0.0.1)
+  - HCacheiOS (0.0.1)
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -205,7 +205,7 @@ PODS:
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
   - react-native-cache (0.1.0):
-    - HCache
+    - HCacheiOS
     - React-Core
   - React-perflogger (0.64.2)
   - React-RCTActionSheet (0.64.2):
@@ -278,7 +278,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - HCache (from `../../cpp/HCache`)
+  - HCacheiOS (from `/Users/yyp/Source/cpp/hcache_example/iOS/HCacheExample/HCache`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -320,8 +320,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
-  HCache:
-    :path: "../../cpp/HCache"
+  HCacheiOS:
+    :path: "/Users/yyp/Source/cpp/hcache_example/iOS/HCacheExample/HCache"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -377,9 +377,9 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 86c42a072a9e39223959e317e2077f61b43bdd28
+  FBReactNativeSpec: f02091bf26386a86317bf0f70c5af888b67a45c4
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
-  HCache: 7d23d90fd56bba030c0e5ce10241ff40d9ce0edf
+  HCacheiOS: 5889a3562ce9868c7e945055191ff953f09ddae9
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
   RCTTypeSafety: c1f31d19349c6b53085766359caac425926fafaa
@@ -391,7 +391,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-cache: 3f3f240149e21750abfdd5bfed194045289dd4f7
+  react-native-cache: fc55b29529a10b77d48bbf2638d7785e92ed5c01
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
   React-RCTActionSheet: af7796ba49ffe4ca92e7277a5d992d37203f7da5
   React-RCTAnimation: 6a2e76ab50c6f25b428d81b76a5a45351c4d77aa
@@ -406,6 +406,6 @@ SPEC CHECKSUMS:
   ReactCommon: 149906e01aa51142707a10665185db879898e966
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
 
-PODFILE CHECKSUM: 4adc0f408dbd2eb1da2f0f3039897e3c8443c090
+PODFILE CHECKSUM: f2ac26d6c9431a4c7ddceedd07f211484a724ca1
 
 COCOAPODS: 1.11.3

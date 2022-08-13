@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
-import { get, set } from 'react-native-cache';
+import { get, set } from 'react-native-hcache';
 
 export default function App() {
 
